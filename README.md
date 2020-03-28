@@ -8,6 +8,33 @@ Purchase list
 Use the gymtracker, email, and new_excel files for the foundation of your tracker while using a cronjob to
 set the automatic email and creation of a new tab in the excel sheet. 
 
-In my crontab I run the email script first, then create new_excel script, followed by system restart (resets counter) 
+See below for crontab config:
   
-  I'll post crontab example soon
+  Crontab -e
+59 23 * * 6 python3 yagmail.py ##This sends an email Saturday at 23:59
+01 0 * * 7 python3 new_excel.py ##This creates new excel for the week on Sunday at 00:01
+02 0 * * * python3 reboot.py ##This reboots the pi on Sunday at 00:02 to reset counter
+
+
+
+Also need to run python script on startup
+
+sudo nano /etc/xdg/lxsession/LXDE/autostart
+
+
+
+
+This will allow you to add an element to run when the LXDE desktop session begins (the raspian default GUI if setup to do from raspi-config)
+
+It will probably have entries like these:
+
+@lxpanel --profile LXDE
+@pcmanfm --desktop --profile LXDE
+@xscreensaver -no-splash
+
+It's just a matter of adding your script there as well
+
+@lxpanel --profile LXDE
+@pcmanfm --desktop --profile LXDE
+@xscreensaver -no-splash
+@python /home/pi/gymtracker/tracker.py

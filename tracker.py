@@ -22,7 +22,7 @@ root = tkinter.Tk()
 root.wm_attributes('-alpha', '0.0')
 root.wm_attributes('-fullscreen', True)
 # root.mainloop()
-filename = PhotoImage(file="/home/pi/Gym.png")
+filename = PhotoImage(file="/home/pi/gymtracker/Assets/gym9.png")
 background_label = Label(root, image=filename)
 background_label.place(x=0, y=0)
 root.title("Awesome Gym Counter")
@@ -74,7 +74,7 @@ ad = tkinter.IntVar()  # AD
 civ = tkinter.IntVar()  # CIV
 ret = tkinter.IntVar()  # RET
 
-wb = openpyxl.load_workbook('/home/pi/counter.xlsx')
+wb = openpyxl.load_workbook('/home/pi/gymtracker/Assets/counter-3.xlsx')
 sheet = wb.active
 
 # AD##
@@ -82,8 +82,8 @@ def onClick_ad(event=None):
     ad.set(ad.get() + 1)
     print("AD #'s-" + str(ad.get()))
     sheet['b2'] = str(ad.get())
-    wb.save('/home/pi/counter.xlsx')
-    pygame.mixer.music.load("/home/pi/Whistle-noise.mp3")
+    wb.save('/home/pi/gymtracker/Assets/counter-3.xlsx')
+    pygame.mixer.music.load("/home/pi/gymtracker/Assets/Whistle-noise.mp3")
     pygame.mixer.music.play(0)
 
 # Civ##
@@ -91,8 +91,8 @@ def onClick_civ(event=None):
     civ.set(civ.get() + 1)
     print("Civilian #'s-" + str(civ.get()))
     sheet['b3'] = str(civ.get())
-    wb.save('/home/pi/counter.xlsx')
-    pygame.mixer.music.load("/home/pi/Retro.mp3")
+    wb.save('/home/pi/gymtracker/Assets/counter-3.xlsx')
+    pygame.mixer.music.load("/home/pi/gymtracker/Assets/Retro.mp3")
     pygame.mixer.music.play(0)
 
 # Retired##
@@ -100,20 +100,21 @@ def onClick_ret(event=None):
     ret.set(ret.get() + 1)
     print("Retired #'s-" + str(ret.get()))
     sheet['b4'] = str(ret.get())
-    wb.save('/home/pi/counter.xlsx')
-    pygame.mixer.music.load("/home/pi/Wrong-number.mp3")
+    wb.save('/home/pi/gymtracker/Assets/counter-3.xlsx')
+    pygame.mixer.music.load("/home/pi/gymtracker/Assets/Wrong-number.mp3")
     pygame.mixer.music.play(0)
 
 
 # AD##
 
-tkinter.Button(root, textvariable=ad, command=onClick_ad, font=myFont, bg = 'black', fg='white', relief=SOLID, bd = 4, highlightthickness = 0, highlightcolor = "black", cursor = "none", activeforeground = 'white', activebackground = 'black', height = 1, width = 2 ).place(x=160, y=155)
+tkinter.Button(root, textvariable=ad, command=onClick_ad, font=myFont, bg = '#003B74', fg='white', relief=FLAT, bd = 0, highlightthickness = 0, highlightcolor = "#003B74", cursor = "none", activeforeground = 'white', activebackground = '#003B74', height = 1, width = 3 ).place(x=100, y=925)
 
 # Civilian##
-tkinter.Button(root, textvariable=civ, command=onClick_civ, font=myFont, bg = 'black', fg='white', relief=SOLID, bd = 4, highlightthickness = 0, highlightcolor = "black", cursor = "none", activeforeground = 'white', activebackground = 'black', height = 1, width = 2 ).place(x=745, y=155)
+tkinter.Button(root, textvariable=civ, command=onClick_civ, font=myFont, bg = '#328400', fg='white', relief=FLAT, bd = 0, highlightthickness = 0, highlightcolor = "#328400", cursor = "none", activeforeground = 'white', activebackground = '#328400', height = 1, width = 3 ).place(x=747, y=925)
 
 # Retired##
-tkinter.Button(root, textvariable=ret, command=onClick_ret, font=myFont, bg = 'black', fg='white', relief=SOLID, bd = 4, highlightthickness = 0, highlightcolor = "black", cursor = "none", activeforeground = 'white', activebackground = 'black', height = 1, width = 2 ).place(x=1330, y=155)
+tkinter.Button(root, textvariable=ret, command=onClick_ret, font=myFont, bg = '#A00004', fg='white', relief=FLAT, bd = 0, highlightthickness = 0, highlightcolor = "#A00004", cursor = "none", activeforeground = 'white', activebackground = '#A00004', height = 1, width = 3 ).place(x=1370, y=925)
+
 
 
 
